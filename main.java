@@ -1,5 +1,8 @@
 import java.io.IOException;
 import java.util.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 
 public class main {
     public static void main(String[] args) throws IOException {
@@ -26,7 +29,9 @@ public class main {
                 loggedUser = new LoggedInUser(data);
                 user = "logged";
             } else if (choice == 3) {
-                generalUser.viewCategories();
+                store s1 = new store();
+                s1.viewCategories();
+              //  generalUser.viewCategories();
             } else if (choice == 4) {
                 generalUser.searchForItem();
             }
