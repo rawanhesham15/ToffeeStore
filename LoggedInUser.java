@@ -1,19 +1,19 @@
 public class LoggedInUser {
     private String name;
-    private String address;
+    private String password ;
     private String status;
     private String phoneNum;
     private String email;
-    private String password;
+    private String address;
     private int loayaltyPoint;
 
     public LoggedInUser(){}
     public LoggedInUser(String data[]){
         setName(data[0]);
-        setAddress(data[1]);
+        setPassword(data[1]);
         setPhoneNum(data[2]);
         setEmail(data[3]);
-        setPassword(data[4]);
+        setAddress(data[4]);
         String status = "Active";
         setStatus(status);
         int loyaltyPoint = 0;
