@@ -3,33 +3,33 @@ import java.util.Scanner;
 
 class GneralUser {
     private static final String FILE_PATH = "users.txt";
-   private static final int MAX_USERS = 10;
+    private static final int MAX_USERS = 10;
 
     public static String[] register() throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("^^^^^REGISTER^^^^^");
         System.out.print("Enter your Name: ");
         String name = sc.nextLine();
-        System.out.print("Enter your Address: ");
-        String address = sc.nextLine();
+        System.out.print("Enter your Password: ");
+        String pass = sc.nextLine();
         System.out.print("Enter your Phone Number: ");
         String phoneNum = sc.nextLine();
         System.out.print("Enter your Email: ");
         String email = sc.nextLine();
-        System.out.print("Enter your Password: ");
-        String pass = sc.nextLine();
-
+        System.out.print("Enter your Address: ");
+        String address = sc.nextLine();
+        
         BufferedWriter out = null;
         try {
             FileWriter fstream = new FileWriter("users.txt", true); //true tells to append data.
             out = new BufferedWriter(fstream);
             out.write("\n");
             out.write(name +",");
-            out.write(address + ",");
+            out.write( pass + ",");
             out.write(phoneNum + ",");
             out.write(email + ",");
-            out.write( pass + ",");
-            out.write("Status:Active ");
+            out.write(address + ",");
+            out.write("Status:Active "+",");
             out.write("LoyaltyPoints: 0");
         }
 

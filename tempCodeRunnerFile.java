@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.*;
 
-public class main {
+public class tempCodeRunnerFile {
     public static void main(String[] args) throws IOException {
         GneralUser generalUser = new GneralUser();
         LoggedInUser loggedUser = new LoggedInUser();
