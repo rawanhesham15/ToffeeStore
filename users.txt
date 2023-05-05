@@ -1,3 +1,4 @@
 asmaa,123,011,asmaa@,cairo,Status:Active ,LoyaltyPoints: 0
 rawan,124,012,rawan@,giza,Status:Active ,LoyaltyPoints: 0
 marwa,125,010,marwa@,cairo,Status:Active ,LoyaltyPoints: 0
+shimaa,123,0033,ask,jkrng,Status:Active ,LoyaltyPoints: 0
