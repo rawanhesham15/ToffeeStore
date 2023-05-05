@@ -48,8 +48,10 @@ public class store {
                     newitem.setBrand(words[5]);
                     newitem.setPrice(Double.parseDouble(words[7]));
                     chocolate.addItem(newitem);
+                    addItem(newitem);
                 }
                 chocolate.displayCategoryItem();
+                addCategory(chocolate);
                 break;
 
             case 2:
@@ -71,8 +73,10 @@ public class store {
                     newitem.setBrand(words[5]);
                     newitem.setPrice(Double.parseDouble(words[7]));
                     cake.addItem(newitem);
+                    addItem(newitem);
                 }
                 cake.displayCategoryItem();
+                addCategory(cake);
                 break;
 
             case 3:
@@ -94,8 +98,10 @@ public class store {
                     newitem.setBrand(words[5]);
                     newitem.setPrice(Double.parseDouble(words[7]));
                     biscuit.addItem(newitem);
+                    addItem(newitem);
                 }
                 biscuit.displayCategoryItem();
+                addCategory(biscuit);
                 break;
 
             case 4:
@@ -117,8 +123,10 @@ public class store {
                     newitem.setBrand(words[5]);
                     newitem.setPrice(Double.parseDouble(words[7]));
                     sweet.addItem(newitem);
+                    addItem(newitem);
                 }
                 sweet.displayCategoryItem();
+                addCategory(sweet);
                 break;
 
             default:
