@@ -3,15 +3,15 @@ import java.util.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
 public class main {
     public static void main(String[] args) throws IOException {
         GneralUser generalUser = new GneralUser();
         LoggedInUser loggedUser = new LoggedInUser();
+        store store = new store();
         String data[];
         String user = "General";
         int choice = 0;
-        while(user == "General" && choice != 5){
+        while (user == "General" && choice != 5) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Welcome to Toffee Store");
             System.out.println("1- log in.");
@@ -29,17 +29,14 @@ public class main {
                 loggedUser = new LoggedInUser(data);
                 user = "logged";
             } else if (choice == 3) {
-                store s1 = new store();
-                s1.viewCategories();
-              //  generalUser.viewCategories();
+                store.viewCategories();
             } else if (choice == 4) {
                 generalUser.searchForItem();
-            }
-            else if(choice == 5){
+            } else if (choice == 5) {
                 return;
             }
         }
-        while(choice != 3) {
+        while (choice != 3) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Welcome " + loggedUser.getName());
             System.out.println("1- View Categories.");
@@ -48,7 +45,7 @@ public class main {
             System.out.print("What do you want to do? choose a number (1, 2, or 3): ");
             choice = sc.nextInt();
             if (choice == 1) {
-                loggedUser.viewCategories();
+                store.viewCategories();
             } else if (choice == 2) {
                 loggedUser.searchForItem();
             } else if (choice == 3) {

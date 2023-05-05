@@ -1,4 +1,4 @@
-category: sweets
+category: SWEETS
 category: sweets name: toffee brand: cc price: 100
 category: sweets name: chocolate brand: cc price: 150
 category: sweets name: candy brand: cc price: 150

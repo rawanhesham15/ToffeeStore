@@ -3,10 +3,20 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class store {
-    category categories[];
-    item items[];
+    List<category> categories = new ArrayList<category>();
+    List<item> items = new ArrayList<item>();
+
+    public void addCategory(category category) {
+        categories.add(category);
+    }
+
+    public void addItem(item item) {
+        items.add(item);
+    }
 
     public void viewCategories() throws IOException {
         System.out.println("choose one of the next categories to display its items: ");
@@ -17,109 +27,103 @@ public class store {
 
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
-        // System.out.println(choice);
 
         switch (choice) {
             case 1:
-                BufferedReader br = new BufferedReader(
-                        new FileReader(
-                                "C:\\Users\\marwa\\OneDrive\\Documents\\toffeeStore\\ToffeeStore\\chocolate.txt"));
-                category newcatChoco = new category();
-                String ww = br.readLine();
-                String ff[] = ww.split(" ");
-                newcatChoco.name = ff[1];
-                System.out.println(newcatChoco.getName());
-                for (String line = br.readLine(); line != null; line = br.readLine()) {
-                   // System.out.println(line);
+                BufferedReader chocFile = new BufferedReader(
+                        new FileReader("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\chocolate.txt"));
+                category chocolate = new category();
+                String chocCategoryLine = chocFile.readLine();
+                String categoryName1[] = chocCategoryLine.split(" ");
+                chocolate.setName(categoryName1[1]);
+                System.out.println("\n^^^^^^^^^" + chocolate.getName() + " CATEGORY" + "^^^^^^^^^");
+
+                for (int i = 0; i < 2; i++) {
+                    String line = chocFile.readLine();
                     String words[] = line.split(" ");
 
                     item newitem = new item();
                     newitem.setName(words[3]);
-                    newitem.setCategory(newcatChoco);
+                    newitem.setCategory(chocolate);
                     newitem.setBrand(words[5]);
                     newitem.setPrice(Double.parseDouble(words[7]));
-                    newitem.displayItem();
-                
+                    chocolate.addItem(newitem);
                 }
-                newcatChoco.displayCategoryItem();
+                chocolate.displayCategoryItem();
                 break;
-            case 2:
-                BufferedReader brcakes = new BufferedReader(
-                        new FileReader("C:\\Users\\marwa\\OneDrive\\Documents\\toffeeStore\\ToffeeStore\\cake.txt"));
-                        category newCatcake = new category();
-                        String www = brcakes.readLine();
-                        String fff[] = www.split(" ");
-                        newCatcake.name = fff[1];
-                        System.out.println(newCatcake.getName());
-                        for (String line = brcakes.readLine(); line != null; line = brcakes.readLine()) {
-                           // System.out.println(line);
-                            String words[] = line.split(" ");
-        
-                            item newitem = new item();
-                            newitem.setName(words[3]);
-                            newitem.setCategory(newCatcake);
-                            newitem.setBrand(words[5]);
-                            newitem.setPrice(Double.parseDouble(words[7]));
-                            newitem.displayItem();
 
-                            
-                            
-                        }
-                        newCatcake.displayCategoryItem();
+            case 2:
+                BufferedReader cakeFile = new BufferedReader(
+                        new FileReader("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\cake.txt"));
+                category cake = new category();
+                String cakeCategoryLine = cakeFile.readLine();
+                String categoryName2[] = cakeCategoryLine.split(" ");
+                cake.setName(categoryName2[1]);
+                System.out.println("\n^^^^^^^^^" + cake.getName() + " CATEGORY" + "^^^^^^^^^");
+
+                for (int i = 0; i < 3; i++) {
+                    String line = cakeFile.readLine();
+                    String words[] = line.split(" ");
+
+                    item newitem = new item();
+                    newitem.setName(words[3]);
+                    newitem.setCategory(cake);
+                    newitem.setBrand(words[5]);
+                    newitem.setPrice(Double.parseDouble(words[7]));
+                    cake.addItem(newitem);
+                }
+                cake.displayCategoryItem();
                 break;
 
             case 3:
-                BufferedReader brBiscuits = new BufferedReader(
-                        new FileReader("C:\\Users\\marwa\\OneDrive\\Documents\\toffeeStore\\ToffeeStore\\biscuit.txt"));
+                BufferedReader biscFile = new BufferedReader(
+                        new FileReader("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\biscuit.txt"));
+                category biscuit = new category();
+                String biscCategoryLine = biscFile.readLine();
+                String categoryName3[] = biscCategoryLine.split(" ");
+                biscuit.setName(categoryName3[1]);
+                System.out.println("\n^^^^^^^^^" + biscuit.getName() + " CATEGORY" + "^^^^^^^^^");
 
-                        category newCatbiscuit = new category();
-                        String wwb = brBiscuits.readLine();
-                        String ffb[] = wwb.split(" ");
-                        newCatbiscuit.name = ffb[1];
-                        System.out.println(newCatbiscuit.getName());
-                        for (String line = brBiscuits.readLine(); line != null; line = brBiscuits.readLine()) {
-                           // System.out.println(line);
-                            String words[] = line.split(" ");
-        
-                            item newitem = new item();
-                            newitem.setName(words[3]);
-                            newitem.setCategory(newCatbiscuit);
-                            newitem.setBrand(words[5]);
-                            newitem.setPrice(Double.parseDouble(words[7]));
-                            newitem.displayItem();
-                            
-                        }
+                for (int i = 0; i < 3; i++) {
+                    String line = biscFile.readLine();
+                    String words[] = line.split(" ");
+
+                    item newitem = new item();
+                    newitem.setName(words[3]);
+                    newitem.setCategory(biscuit);
+                    newitem.setBrand(words[5]);
+                    newitem.setPrice(Double.parseDouble(words[7]));
+                    biscuit.addItem(newitem);
+                }
+                biscuit.displayCategoryItem();
                 break;
 
             case 4:
-                BufferedReader brsweet = new BufferedReader(
-                        new FileReader("C:\\Users\\marwa\\OneDrive\\Documents\\toffeeStore\\ToffeeStore\\sweet.txt"));
-                        category newCatsweet = new category();
-                        
-                        String wws = brsweet.readLine();
-                        String ffs[] = wws.split(" ");
-                        newCatsweet.name = ffs[1];
-                        System.out.println(newCatsweet.getName());
-                        int z = 0;
-                        for (String line = brsweet.readLine(); line != null; line = brsweet.readLine()) {
-                           // System.out.println(line);
-                            String words[] = line.split(" ");
-        
-                            item newitem = new item();
-                            newitem.setName(words[3]);
-                            newitem.setCategory(newCatsweet);
-                            newitem.setBrand(words[5]);
-                            newitem.setPrice(Double.parseDouble(words[7]));
-                                newitem.displayItem();
-                                newCatsweet.addItem(newitem);
-                            
-}
+                BufferedReader sweetFile = new BufferedReader(
+                        new FileReader("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\sweet.txt"));
+                category sweet = new category();
+                String sweetCategoryLine = sweetFile.readLine();
+                String categoryName4[] = sweetCategoryLine.split(" ");
+                sweet.setName(categoryName4[1]);
+                System.out.println("\n^^^^^^^^^" + sweet.getName() + " CATEGORY" + "^^^^^^^^^");
 
+                for (int i = 0; i < 3; i++) {
+                    String line = sweetFile.readLine();
+                    String words[] = line.split(" ");
+
+                    item newitem = new item();
+                    newitem.setName(words[3]);
+                    newitem.setCategory(sweet);
+                    newitem.setBrand(words[5]);
+                    newitem.setPrice(Double.parseDouble(words[7]));
+                    sweet.addItem(newitem);
+                }
+                sweet.displayCategoryItem();
                 break;
+
             default:
                 System.out.println("Sorry, this category doesn't exist. ");
                 break;
         }
-
     }
 }

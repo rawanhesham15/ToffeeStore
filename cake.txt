@@ -1,4 +1,4 @@
-category: cake
+category: CAKES
 category: cake name: chocolateCake brand: cc price: 150
 category: cake name: orangeCake brand: cc price: 150
 category: cake name: vanillaCake brand: cc price: 150
