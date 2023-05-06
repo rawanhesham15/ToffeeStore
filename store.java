@@ -156,28 +156,25 @@ public class store {
         }
 
         String t = "loggedin";
-        if(userType.equals(t))
-        {
+        if (userType.equals(t)) {
             System.out.println("Enter 1 if you want to add an item to your shopping cart");
-                int ch = sc.nextInt();
-                if(ch == 1)
-                {
-                    System.out.println("Enter name of item: ");
-                    String nm = sc.next();
-                    System.out.println("Enter Quantity you want:");
-                    int num = sc.nextInt();
+            int ch = sc.nextInt();
+            if (ch == 1) {
+                System.out.println("Enter name of item: ");
+                String nm = sc.next();
+                System.out.println("Enter Quantity you want:");
+                int num = sc.nextInt();
 
-            for (int x = 0; x < items.size(); x++) {
-            String tempp = items.get(x).getName();
-            if (tempp.equals(nm)) {
-                item addt = items.get(x);
-                addt.setOrderedQuantity(num);
-                return items.get(x);
-            } 
-        
+                for (int x = 0; x < items.size(); x++) {
+                    String tempp = items.get(x).getName();
+                    if (tempp.equals(nm)) {
+                        item addt = items.get(x);
+                        addt.setOrderedQuantity(num);
+                        return items.get(x);
+                    }
                 }
+            }
         }
-    }
         return null;
     }
 
@@ -195,26 +192,23 @@ public class store {
         if (!flag) {
             System.out.println("Sorry, this item doesn't exist");
         }
-        String t = "loggedin";
-            if(userType.equals(t))
-            {
-                System.out.println("Enter 1 if you want to add an item to your shopping cart");
-                    int ch = sc.nextInt();
-                    if(ch == 1)
-                    {
 
-                        System.out.println("Enter Quantity you want:");
-                        int num = sc.nextInt();
+        String t = "loggedin";
+        if (userType.equals(t)) {
+            System.out.println("Enter 1 if you want to add an item to your shopping cart");
+            int ch = sc.nextInt();
+            if (ch == 1) {
+                System.out.println("Enter Quantity you want:");
+                int num = sc.nextInt();
 
                 for (int x = 0; x < items.size(); x++) {
-                String tempp = items.get(x).getName();
-                if (tempp.equals(n)) {
-                    item addt = items.get(x);
-                    addt.setOrderedQuantity(num);
-                    return items.get(x);
-                } 
-            
+                    String tempp = items.get(x).getName();
+                    if (tempp.equals(n)) {
+                        item addt = items.get(x);
+                        addt.setOrderedQuantity(num);
+                        return items.get(x);
                     }
+                }
             }
         }
         return null;
@@ -231,35 +225,32 @@ public class store {
             } else {
                 continue;
             }
-            if(!flag)
-            {
+            if (!flag) {
                 System.out.println("Sorry, this item doesn't exist");
-                return null ;
+                return null;
             }
             String t = "loggedin";
-            if(userType.equals(t))
-            {
+            if (userType.equals(t)) {
                 System.out.println("Enter 1 if you want to add an item to your shopping cart");
-                    int ch = sc.nextInt();
-                    if(ch == 1)
-                    {
-                        System.out.println("Enter name of item: ");
-                        String nm = sc.next();
-                        System.out.println("Enter Quantity you want:");
-                        int num = sc.nextInt();
+                int ch = sc.nextInt();
+                if (ch == 1) {
+                    System.out.println("Enter name of item: ");
+                    String nm = sc.next();
+                    System.out.println("Enter Quantity you want:");
+                    int num = sc.nextInt();
 
-                for (int x = 0; x < items.size(); x++) {
-                String tempp = items.get(x).getBrand();
-                if (tempp.equals(n)) {
-                    item addt = items.get(x);
-                    addt.setOrderedQuantity(num);
-                    return items.get(x);
-                } 
-            
+                    for (int x = 0; x < items.size(); x++) {
+                        String tempp = items.get(x).getBrand();
+                        if (tempp.equals(n)) {
+                            item addt = items.get(x);
+                            addt.setOrderedQuantity(num);
+                            return items.get(x);
+                        }
+
                     }
+                }
             }
         }
-    }
         return null;
 
     }
@@ -281,7 +272,7 @@ public class store {
                 String itt = sc.next();
                 item cartitem2 = searchForItemByBrand(itt, useType);
                 return cartitem2;
-                
+
         }
         return null;
 

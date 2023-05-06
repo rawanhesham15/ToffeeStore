@@ -7,6 +7,8 @@ public class main {
     public static void main(String[] args) throws IOException {
         GneralUser generalUser = new GneralUser();
         LoggedInUser loggedUser = new LoggedInUser();
+        shoppingCart cart = new shoppingCart();
+
         store store = new store();
         store.storeCatg();
         String data[];
@@ -26,11 +28,13 @@ public class main {
                 data = new String[7];
                 data = generalUser.logIn();
                 loggedUser = new LoggedInUser(data);
+                loggedUser.setShoppingCart(cart);
                 user = "logged";
             } else if (choice == 2) {
                 data = new String[5];
                 data = generalUser.register();
                 loggedUser = new LoggedInUser(data);
+                loggedUser.setShoppingCart(cart);
                 user = "logged";
             } else if (choice == 3) {
                 store.viewCategories("general");
@@ -47,7 +51,6 @@ public class main {
         }
         while (choice != 5) {
             Scanner sc = new Scanner(System.in);
-            shoppingCart cart = new shoppingCart();
             System.out.println("\n*********Welcome " + loggedUser.getUserName() + "*********\n");
             System.out.println("1- View Categories.");
             System.out.println("2- Search for Item.");
@@ -59,13 +62,11 @@ public class main {
             if (choice == 1) {
                 item cartitem = new item();
                 cartitem = store.viewCategories("loggedin");
-                loggedUser.setShoppingCart(cart);
                 loggedUser.getCart().addItem(cartitem);
             } else if (choice == 2) {
                 // loggedUser.searchForItem();
                 item cartitem = new item();
                 cartitem = store.search("loggedin");
-                loggedUser.setShoppingCart(cart);
                 loggedUser.getCart().addItem(cartitem);
             } else if (choice == 3) {
                 System.out.println("Viewing " + loggedUser.getName() + "'s Shopping Cart");

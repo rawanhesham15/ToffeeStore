@@ -85,6 +85,7 @@ class GneralUser {
         String username = input.nextLine();
         System.out.print("Enter password: ");
         String password = input.nextLine();
+        System.out.println("------------------------------");
 
         // search the userArray for a matching username and password
         int index = -1;
