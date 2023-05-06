@@ -1,4 +1,4 @@
 category: SWEETS
-category: sweets name: toffee brand: cc price: 100
-category: sweets name: chocolate brand: cc price: 150
-category: sweets name: candy brand: cc price: 150
+category: sweets name: toffee brand: ww price: 100 availablenum: 40 type: kilo maxQuantity: 10
+category: sweets name: chocolate brand: cc price: 150 availablenum: 50 type: kilo maxQuantity: 10
+category: sweets name: candy brand: cc price: 150 availablenum: 45 type: kilo maxQuantity: 10

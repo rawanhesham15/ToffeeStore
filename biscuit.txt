@@ -1,4 +1,4 @@
 category: BISCUITS
-category: biscuit name: chocolateBiscuit brand: cc price: 15
-category: biscuit name: orangeeBiscuit brand: cc price: 10
-category: biscuit name: vanillaBiscuit brand: cc price: 10
+category: biscuit name: chocolateBiscuit brand: cc price: 15 availablenum: 100 type: one maxQuantity: 50
+category: biscuit name: orangeeBiscuit brand: cc price: 10 availablenum: 150 type: one maxQuantity: 50
+category: biscuit name: vanillaBiscuit brand: cc price: 10 availablenum: 200 type: one maxQuantity: 50

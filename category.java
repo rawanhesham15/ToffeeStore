@@ -32,6 +32,7 @@ public class category {
 
     public void displayCategoryItem() throws IOException {
         // readfromfile();
+        System.out.println("\n^^^^^^^^^" + getName() + " CATEGORY" + "^^^^^^^^^");
         for (int i = 0; i < items.size(); i++) {
             System.out.println();
             System.out.println("Name: " + items.get(i).getName());

@@ -1,5 +1,7 @@
 import java.util.jar.Attributes.Name;
 
+import javax.sound.sampled.AudioFileFormat.Type;
+
 public class item {
     private String name;
     private String brand;
@@ -78,11 +80,29 @@ public class item {
     public double getOrderedQuantity() {
         return orderedQuantity;
     }
+    public void setIemType(String type)
+    {
+        itemType = type;
+    }
 
+    public String getItemType()
+    {
+        return itemType;
+    }
     public void displayItem() {
         System.out.println(" Name : " + name);
         System.out.println(" Category : " + category.getName());
         System.out.println(" Brand : " + brand);
+        System.out.println(" Price : " + price);
+        System.out.println("");
+    }
+
+    public void displayItemForCart() {
+        System.out.println(" Name : " + name);
+        System.out.println(" Category : " + category.getName());
+        System.out.println(" Brand : " + brand);
+        System.out.println(" Required Quantity : " + orderedQuantity);
+        System.out.println(" Unit : " + itemType);
         System.out.println(" Price : " + price);
         System.out.println("");
     }

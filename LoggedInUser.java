@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class LoggedInUser {
     private String name;
     private String password;
@@ -6,6 +8,7 @@ public class LoggedInUser {
     private String email;
     private String address;
     private int loayaltyPoint;
+    private shoppingCart cart;
 
     public LoggedInUser() {
     }
@@ -78,6 +81,16 @@ public class LoggedInUser {
         this.loayaltyPoint = loayaltyPoint;
     }
 
+    public void setShoppingCart(shoppingCart c)
+    {
+        cart = c;
+    }
+
+    public shoppingCart getCart()
+    {
+        return cart;
+    }
+
     public void viewCategories() {
         System.out.println("^^^^^VIEW CATEGORIES^^^^^");
     }
@@ -85,4 +98,5 @@ public class LoggedInUser {
     public void searchForItem() {
         System.out.println("^^^^^SEARCH FOR ITEM^^^^^");
     }
+
 }

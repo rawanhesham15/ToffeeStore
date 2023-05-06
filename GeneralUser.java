@@ -4,7 +4,7 @@ import java.util.Scanner;
 class GneralUser {
     private static final String FILE_PATH = "users.txt";
     private static final int MAX_USERS = 10;
-
+    // general user may have a store 
     public static String[] register() throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("^^^^^REGISTER^^^^^");
