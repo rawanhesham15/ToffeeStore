@@ -1,14 +1,16 @@
 public class LoggedInUser {
     private String name;
-    private String password ;
+    private String password;
     private String status;
     private String phoneNum;
     private String email;
     private String address;
     private int loayaltyPoint;
 
-    public LoggedInUser(){}
-    public LoggedInUser(String data[]){
+    public LoggedInUser() {
+    }
+
+    public LoggedInUser(String data[]) {
         setName(data[0]);
         setPassword(data[1]);
         setPhoneNum(data[2]);
@@ -27,6 +29,7 @@ public class LoggedInUser {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getAddress() {
         return address;
     }
@@ -74,6 +77,7 @@ public class LoggedInUser {
     public void setLoayaltyPoint(int loayaltyPoint) {
         this.loayaltyPoint = loayaltyPoint;
     }
+
     public void viewCategories() {
         System.out.println("^^^^^VIEW CATEGORIES^^^^^");
     }
