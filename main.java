@@ -45,7 +45,7 @@ public class main {
         while (choice != 5) {
             Scanner sc = new Scanner(System.in);
             shoppingCart cart = new shoppingCart();
-            System.out.println("Welcome " + loggedUser.getName());
+            System.out.println("Welcome " + loggedUser.getUserName());
             System.out.println("1- View Categories.");
             System.out.println("2- Search for Item.");
             System.out.println("3- View Shopping Cart");

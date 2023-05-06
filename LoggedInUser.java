@@ -23,8 +23,25 @@ public class LoggedInUser {
         setStatus(status);
         int loyaltyPoint = 0;
         setLoayaltyPoint(loyaltyPoint);
+        setUserName(data[5]);
+        setPass(data[6]);
+    }
+    
+
+
+    public String getUserName() {
+        return name ;
     }
 
+    public void setUserName(String USERNAME) {
+        this.name = USERNAME;
+    }
+    public String getPass() {
+        return password;
+    }
+    public void setPass(String pass) {
+        this.password = pass;
+    }
     public String getName() {
         return name;
     }

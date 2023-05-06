@@ -1,4 +1,5 @@
 import java.io.*;
+import java.net.ConnectException;
 import java.util.Scanner;
 
 class GneralUser {
@@ -48,7 +49,7 @@ class GneralUser {
         return data;
     }
 
-    public void logIn() {
+    public static String[] logIn() {
         String[][] userArray = new String[MAX_USERS][2];
         int numberOfUsers = 0;
 
@@ -82,12 +83,23 @@ class GneralUser {
             }
         }
 
+        
+
         if (index >= 0) {
             System.out.println("Welcome " + userArray[index][0] + "!");
+           
         } else {
-            System.out.println("Invalid login.");
+           
+            ConnectException e = new ConnectException();
+            System.out.println(e);
         }
-    }
+        userArray[numberOfUsers][0] = username;
+        userArray[numberOfUsers][1] = password;
+        numberOfUsers++;
+        return userArray[numberOfUsers];
+        
+        }
+
 
     public void viewCategories() {
         System.out.println("^^^^^VIEW CATEGORIES^^^^^");
