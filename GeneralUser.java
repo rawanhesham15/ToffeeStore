@@ -5,10 +5,12 @@ import java.util.Scanner;
 class GneralUser {
     private static final String FILE_PATH = "users.txt";
     private static final int MAX_USERS = 10;
-    // general user may have a store 
+
+    // general user may have a store
     public static String[] register() throws IOException {
         Scanner sc = new Scanner(System.in);
-        System.out.println("^^^^^REGISTER^^^^^");
+        System.out.println("\n     ^^^^^REGISTER^^^^^");
+        System.out.println("-----------------------------");
         System.out.print("Enter your Name: ");
         String name = sc.nextLine();
         System.out.print("Enter your Password: ");
@@ -24,14 +26,13 @@ class GneralUser {
         try {
             FileWriter fstream = new FileWriter("users.txt", true); // true tells to append data.
             out = new BufferedWriter(fstream);
-            out.write("\n");
             out.write(name + ",");
             out.write(pass + ",");
             out.write(phoneNum + ",");
             out.write(email + ",");
             out.write(address + ",");
-            out.write("Status:Active " + ",");
-            out.write("LoyaltyPoints: 0");
+            out.write("Active,");
+            out.write("0");
             out.write("\n");
         }
 
@@ -45,12 +46,18 @@ class GneralUser {
             }
         }
         String data[] = { name, pass, address, phoneNum, email };
-        System.out.println("^^^^^Done You Are Now Registered.^^^^^");
+        System.out.println("\n^^^^^Done You Are Now Registered.^^^^^");
+        System.out.println("----------------------------------------------------");
+
         return data;
     }
 
-    public static String[] logIn() {
-        String[][] userArray = new String[MAX_USERS][2];
+    public String[] logIn() throws IOException {
+        System.out.println("\n      ^^^^^LOG IN^^^^^");
+        System.out.println("------------------------------");
+
+        String name, pass, email, status, phoneNum, address, points;
+        String[][] userArray = new String[MAX_USERS][7];
         int numberOfUsers = 0;
 
         // load the login data from the file
@@ -61,6 +68,11 @@ class GneralUser {
                 String[] parts = line.split(",");
                 userArray[numberOfUsers][0] = parts[0]; // username
                 userArray[numberOfUsers][1] = parts[1]; // password
+                userArray[numberOfUsers][2] = parts[2]; // phoneNum
+                userArray[numberOfUsers][3] = parts[3]; // email
+                userArray[numberOfUsers][4] = parts[4]; // address
+                userArray[numberOfUsers][5] = parts[5]; // status
+                userArray[numberOfUsers][6] = parts[6]; // loaylty points
                 numberOfUsers++;
             }
         } catch (FileNotFoundException e) {
@@ -82,24 +94,25 @@ class GneralUser {
                 break;
             }
         }
-
-        
+        name = userArray[index][0];
+        pass = userArray[index][1];
+        phoneNum = userArray[index][2];
+        email = userArray[index][3];
+        address = userArray[index][4];
+        status = userArray[index][5];
+        points = userArray[index][6];
 
         if (index >= 0) {
-            System.out.println("Welcome " + userArray[index][0] + "!");
-           
+            // System.out.println("Welcome " + userArray[index][0] + "!");
+
         } else {
-           
             ConnectException e = new ConnectException();
             System.out.println(e);
         }
-        userArray[numberOfUsers][0] = username;
-        userArray[numberOfUsers][1] = password;
-        numberOfUsers++;
-        return userArray[numberOfUsers];
-        
-        }
 
+        String data[] = { name, pass, phoneNum, email, address, status, points };
+        return data;
+    }
 
     public void viewCategories() {
         System.out.println("^^^^^VIEW CATEGORIES^^^^^");

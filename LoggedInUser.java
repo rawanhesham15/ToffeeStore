@@ -19,29 +19,34 @@ public class LoggedInUser {
         setPhoneNum(data[2]);
         setEmail(data[3]);
         setAddress(data[4]);
-        String status = "Active";
-        setStatus(status);
-        int loyaltyPoint = 0;
-        setLoayaltyPoint(loyaltyPoint);
-        setUserName(data[5]);
-        setPass(data[6]);
-    }
-    
+        if (data.length == 5) {
+            String status = "Active";
+            setStatus(status);
+            int loyaltyPoint = 0;
+            setLoayaltyPoint(loyaltyPoint);
+        } else {
+            setStatus(data[5]);
+            setLoayaltyPoint(Integer.parseInt(data[6]));
+        }
 
+    }
 
     public String getUserName() {
-        return name ;
+        return name;
     }
 
     public void setUserName(String USERNAME) {
         this.name = USERNAME;
     }
+
     public String getPass() {
         return password;
     }
+
     public void setPass(String pass) {
         this.password = pass;
     }
+
     public String getName() {
         return name;
     }
@@ -98,13 +103,11 @@ public class LoggedInUser {
         this.loayaltyPoint = loayaltyPoint;
     }
 
-    public void setShoppingCart(shoppingCart c)
-    {
+    public void setShoppingCart(shoppingCart c) {
         cart = c;
     }
 
-    public shoppingCart getCart()
-    {
+    public shoppingCart getCart() {
         return cart;
     }
 

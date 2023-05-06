@@ -1,4 +1,5 @@
-asmaa,123,011,asmaa@,cairo,Status:Active ,LoyaltyPoints: 0
-rawan,124,012,rawan@,giza,Status:Active ,LoyaltyPoints: 0
-marwa,125,010,marwa@,cairo,Status:Active ,LoyaltyPoints: 0
-shimaa,123,0033,ask,jkrng,Status:Active ,LoyaltyPoints: 0
+rawan,12345,0111,rawan@gmail.com,cairo,Active,0
+marwa,098,0122,marwa@gmail.com,giza,Active,0
+asmaa,456,015,asmaa@gmail.com,helwan,Active,0
+rana,678,011,rana@gmail.com,manial,Active,0
+esraa,soso,123,soso@gmail.com,maadi,Active,0
