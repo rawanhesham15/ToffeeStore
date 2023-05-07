@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.ConnectException;
 import java.util.Scanner;
 
-class GneralUser {
+public class GneralUser {
     private static final String FILE_PATH = "users.txt";
     private static final int MAX_USERS = 10;
 
@@ -52,7 +52,7 @@ class GneralUser {
         return data;
     }
 
-    public String[] logIn() throws IOException {
+    public String[] logIn()  {
         System.out.println("\n      ^^^^^LOG IN^^^^^");
         System.out.println("------------------------------");
 
@@ -88,30 +88,20 @@ class GneralUser {
         System.out.println("------------------------------");
 
         // search the userArray for a matching username and password
-        int index = -1;
         for (int i = 0; i < numberOfUsers; i++) {
             if (userArray[i][0].equals(username) && userArray[i][1].equals(password)) {
-                index = i;
-                break;
+                name = userArray[i][0];
+                pass = userArray[i][1];
+                phoneNum = userArray[i][2];
+                email = userArray[i][3];
+                address = userArray[i][4];
+                status = userArray[i][5];
+                points = userArray[i][6];
+                String data[] = { name, pass, address, phoneNum, email, status, points };
+                return data;
             }
         }
-        name = userArray[index][0];
-        pass = userArray[index][1];
-        phoneNum = userArray[index][2];
-        email = userArray[index][3];
-        address = userArray[index][4];
-        status = userArray[index][5];
-        points = userArray[index][6];
-
-        if (index >= 0) {
-            // System.out.println("Welcome " + userArray[index][0] + "!");
-
-        } else {
-            ConnectException e = new ConnectException();
-            System.out.println(e);
-        }
-
-        String data[] = { name, pass, phoneNum, email, address, status, points };
+        String data[] = { null };
         return data;
     }
 

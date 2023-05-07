@@ -3,6 +3,8 @@ import java.util.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
+
 public class main {
     public static void main(String[] args) throws IOException {
         GneralUser generalUser = new GneralUser();
@@ -27,6 +29,11 @@ public class main {
             if (choice == 1) {
                 data = new String[7];
                 data = generalUser.logIn();
+                if(data[0]==null){
+                    System.out.println("invalid username or password");
+                    System.out.println("please try again");
+                    data = generalUser.logIn();
+                }
                 loggedUser = new LoggedInUser(data);
                 loggedUser.setShoppingCart(cart);
                 user = "logged";
