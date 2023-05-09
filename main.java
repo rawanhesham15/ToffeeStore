@@ -11,6 +11,7 @@ public class main {
         LoggedInUser loggedUser = new LoggedInUser();
         shoppingCart cart = new shoppingCart();
 
+
         store store = new store();
         store.storeCatg();
         String data[];
@@ -36,6 +37,7 @@ public class main {
                 }
                 loggedUser = new LoggedInUser(data);
                 loggedUser.setShoppingCart(cart);
+                cart.loadItemsFromCart(loggedUser);
                 user = "logged";
             } else if (choice == 2) {
                 data = new String[5];
@@ -69,12 +71,12 @@ public class main {
             if (choice == 1) {
                 item cartitem = new item();
                 cartitem = store.viewCategories("loggedin");
-                loggedUser.getCart().addItem(cartitem);
+                loggedUser.getCart().addItem(cartitem, loggedUser);
             } else if (choice == 2) {
                 // loggedUser.searchForItem();
                 item cartitem = new item();
                 cartitem = store.search("loggedin");
-                loggedUser.getCart().addItem(cartitem);
+                loggedUser.getCart().addItem(cartitem, loggedUser);
             } else if (choice == 3) {
                 System.out.println("Viewing " + loggedUser.getName() + "'s Shopping Cart");
                 loggedUser.getCart().displayShoppingCartItems();

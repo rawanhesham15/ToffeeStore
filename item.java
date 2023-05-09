@@ -101,7 +101,7 @@ public class item {
         System.out.println(" Name : " + name);
         System.out.println(" Category : " + category.getName());
         System.out.println(" Brand : " + brand);
-        System.out.println(" Required Quantity : " + orderedQuantity);
+        System.out.println(" Ordered Quantity : " + orderedQuantity);
         System.out.println(" Unit : " + itemType);
         System.out.println(" Price : " + price);
         System.out.println("");
