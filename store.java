@@ -3,9 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
-
 import javax.management.openmbean.SimpleType;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +29,6 @@ public class store {
         String chocCategoryLine = chocFile.readLine();
         String categoryName1[] = chocCategoryLine.split(" ");
         chocolate.setName(categoryName1[1]);
-        System.out.println(chocolate.getName());
         for (int i = 0; i < 2; i++) {
             String line = chocFile.readLine();
             String words[] = line.split(" ");
@@ -161,6 +158,7 @@ public class store {
         String t = "loggedin";
         if (userType.equals(t)) {
             System.out.println("Enter 1 if you want to add an item to your shopping cart");
+            System.err.println("Enter 0 to quit");
             int ch = sc.nextInt();
             if (ch == 1) {
                 System.out.println("Enter name of item: ");
@@ -190,6 +188,12 @@ public class store {
                         return items.get(x);
                     }
                 }
+            item i = search(t);
+            return i;
+            }
+            else if(ch == 0)
+            {
+                return null;
             }
         }
         return null;
@@ -237,13 +241,11 @@ public class store {
                 continue;
             }
         }
-        if (!flag) {
-            System.out.println("Sorry, this item doesn't exist");
-        }
 
         String t = "loggedin";
-        if (userType.equals(t)) {
+        if (userType.equals(t) ) {
             System.out.println("Enter 1 if you want to add an item to your shopping cart");
+            System.err.println("Enter 0 to quit");
             int ch = sc.nextInt();
             if (ch == 1) {
                 System.out.println("Enter Quantity you want:");
@@ -273,6 +275,10 @@ public class store {
                     }
                 }
             }
+            else if(ch == 0)
+            {
+                return null;
+            }
         }
         return null;
 
@@ -288,13 +294,10 @@ public class store {
             } else {
                 continue;
             }
-            if (!flag) {
-                System.out.println("Sorry, this item doesn't exist");
-                return null;
-            }
             String t = "loggedin";
-            if (userType.equals(t)) {
+            if (userType.equals(t) ) {
                 System.out.println("Enter 1 if you want to add an item to your shopping cart");
+                System.err.println("Enter 0 to quit");
                 int ch = sc.nextInt();
                 if (ch == 1) {
                     System.out.println("Enter name of item: ");
@@ -326,6 +329,10 @@ public class store {
                         }
                     }
                 }
+                else if(ch == 0)
+                {
+                    return null;
+                }
             }
         }
         return null;
@@ -339,15 +346,59 @@ public class store {
         int c = sc.nextInt();
         switch (c) {
             case 1:
-                System.out.println("Enter the item's name: ");
-                String it = sc.next();
-                item cartitem = searchForItemByName(it, useType);
-                return cartitem;
+                Boolean itemExist  =true;
+                while(itemExist)
+                {
+                    System.out.println("Enter the item's name: ");
+                    String it = sc.next();
+                    for (item item : items) {
+                        if(item.getName().equals(it))
+                        {
+                            itemExist = false;
+                            item cartitem2 = searchForItemByName(it, useType);
+                            return cartitem2;
+            
+                        }
+                    
+                    }
+                    if(itemExist)
+                    {
+                            System.err.println("Sorry this item doesn't exist ");
+                            System.err.println("Try again");
+                        
+                    }
+                }
+                
             case 2:
+            Boolean br = true;
+            // validating that the brand exists
+            // System.out.println("Enter the item's brand: ");
+            // String itt = sc.next();
+            while(br)
+            {
                 System.out.println("Enter the item's brand: ");
-                String itt = sc.next();
-                item cartitem2 = searchForItemByBrand(itt, useType);
-                return cartitem2;
+                String it = sc.next();
+                for (item item : items) {
+                    if(item.getBrand().equals(it))
+                    {
+                        br = false;
+                        item cartitem = searchForItemByBrand(it, useType);
+                        return cartitem;
+        
+                    }
+                }
+                if(br)
+            {
+                    System.err.println("Sorry this brand doesn't exist ");
+                    System.err.println("Try again");
+                
+            }
+            }
+    default:
+    System.err.println("Invalid input");
+        break;
+            
+            
         }
         return null;
     }

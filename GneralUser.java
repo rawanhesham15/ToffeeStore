@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.ConnectException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class GneralUser {
     private static final String FILE_PATH = "users.txt";
@@ -8,19 +9,96 @@ public class GneralUser {
 
     // general user may have a store
     public static String[] register() throws IOException {
+        boolean nvalid = true  , pvalid = true , evalid = true , phvalid = true;
+        // regex part for the data
+        final String NAME_REGEX = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
+
+        final Pattern NAME_PATTERN = Pattern.compile(NAME_REGEX);
+
+        // alphanumeric and underscore are allowed
+        final String USERNAME_REGEX = "^[a-zA-Z0-9_]+$";
+
+        final Pattern USERNAME_PATTERN = Pattern.compile(USERNAME_REGEX);
+
+        // US phone number with or without dashes
+        final String PHONE_REGEX = "^([0]([\\s-./\\\\])?)?(\\(?[0-9]\\d{1}\\)?|[1-9]\\d{2})([\\s-./\\\\])?([0-9]{3}([\\s-./\\\\])?[0-9]{4}|[a-zA-Z0-9]{7}|([0-9]{3}[-][a-zA-Z0-9]{4}))";
+
+        final Pattern PHONE_PATTERN = Pattern.compile(PHONE_REGEX);
+
+        // local-part + @ + domain part
+        final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*" +
+                "@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+        final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+
+        // 8-16 characters password with at least one digit, one lowercase letter,
+        // one uppercase letter, one special character with no whitespaces
+        final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,16}$";
+
+        final Pattern PASSWORD_PATTERN = Pattern.compile(PASSWORD_REGEX);
+
+        String name = ""  , pass = "" , address = "", phoneNum = "", email = "";
         Scanner sc = new Scanner(System.in);
         System.out.println("\n     ^^^^^REGISTER^^^^^");
         System.out.println("-----------------------------");
-        System.out.print("Enter your Name: ");
-        String name = sc.nextLine();
-        System.out.print("Enter your Password: ");
-        String pass = sc.nextLine();
-        System.out.print("Enter your Phone Number: ");
-        String phoneNum = sc.nextLine();
-        System.out.print("Enter your Email: ");
-        String email = sc.nextLine();
+        while (nvalid) {
+            System.out.print("Enter your Name: ");
+            name = sc.nextLine();
+            if(NAME_PATTERN.matcher(name).matches())
+            {
+                nvalid = false;
+            }
+            else
+            {
+                System.err.println("Please enter a vaild name");
+            }
+        }
+
+        while(pvalid)
+        {
+            System.out.print("Enter your Password: ");
+            pass = sc.nextLine();
+            if(PASSWORD_PATTERN.matcher(pass).matches())
+            {
+                pvalid = false;
+            }
+
+            else
+            {
+                System.err.println("please enter a valid password");
+            }
+        }
+        while(phvalid)
+        {
+            System.out.print("Enter your Phone Number: ");
+            phoneNum = sc.nextLine();
+            if(PHONE_PATTERN.matcher(phoneNum).matches())
+            {
+                phvalid = false;
+            }
+
+            else
+            {
+                System.err.println("please enter a valid phone number");
+            }
+        }
+        while(evalid)
+        {
+            System.out.print("Enter your Email: ");
+            email = sc.nextLine();
+            if(EMAIL_PATTERN.matcher(email).matches())
+            {
+                evalid = false;
+            }
+
+            else
+            {
+                System.err.println("please enter a valid email");
+            }
+        }
+        
         System.out.print("Enter your Address: ");
-        String address = sc.nextLine();
+        address = sc.nextLine();
 
         BufferedWriter out = null;
         try {
@@ -52,7 +130,7 @@ public class GneralUser {
         return data;
     }
 
-    public String[] logIn()  {
+    public String[] logIn() {
         System.out.println("\n      ^^^^^LOG IN^^^^^");
         System.out.println("------------------------------");
 
