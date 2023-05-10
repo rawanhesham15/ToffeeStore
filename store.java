@@ -3,6 +3,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+
+import javax.management.openmbean.SimpleType;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,7 +150,7 @@ public class store {
                 break;
 
             case 4:
-                categories.get(2).displayCategoryItem();
+                categories.get(3).displayCategoryItem();
                 break;
 
             default:
@@ -164,12 +167,26 @@ public class store {
                 String nm = sc.next();
                 System.out.println("Enter Quantity you want:");
                 int num = sc.nextInt();
+                boolean checkQuantity = checkQuantity(nm, num);
+                double availableAmount = availableAmount(nm);
+
+                while (checkQuantity == false || availableAmount < num) {
+                    System.out.println("Not Valid Quantity!");
+                    System.out.println("Available Amout of " + nm + "is: " + availableAmount);
+                    System.out.println("Valid Quantity for Sealed Items(Sold by unit): maximum 50 unit");
+                    System.out.println("Valid Quantity for Loose Items(Sold by kilo): maximum 10 kilo");
+                    System.out.println("Enter Quantity you want:");
+                    num = sc.nextInt();
+                    checkQuantity = checkQuantity(nm, num);
+                }
 
                 for (int x = 0; x < items.size(); x++) {
                     String tempp = items.get(x).getName();
                     if (tempp.equals(nm)) {
                         item addt = items.get(x);
                         addt.setOrderedQuantity(num);
+                        double itemQuant = items.get(x).getAvailableNum();
+                        items.get(x).setAvailableNum(itemQuant - num);
                         return items.get(x);
                     }
                 }
@@ -178,12 +195,43 @@ public class store {
         return null;
     }
 
+    public double availableAmount(String itemName) {
+        for (int i = 0; i < items.size(); i++) {
+            String temp = items.get(i).getName();
+            if (temp.equals(itemName)) {
+                return items.get(i).getAvailableNum();
+            }
+        }
+        return 0;
+    }
+
+    public boolean checkQuantity(String itemName, double quantity) {
+        for (int i = 0; i < items.size(); i++) {
+            String temp = items.get(i).getName();
+            if (temp.equals(itemName)) {
+                if (items.get(i).getItemType().equals("kilo") && quantity > 10) {
+                    return false;
+                } else if (items.get(i).getItemType().equals("one") && quantity > 50) {
+
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public item searchForItemByName(String n, String userType) {
         boolean flag = false;
+        String itemType = "";
+        String itemName = "";
         for (int i = 0; i < items.size(); i++) {
             String temp = items.get(i).getName();
             if (temp.equals(n)) {
+                itemName = items.get(i).getName();
                 flag = true;
+                itemType = items.get(i).getItemType();
                 items.get(i).displayItem();
             } else {
                 continue;
@@ -200,12 +248,27 @@ public class store {
             if (ch == 1) {
                 System.out.println("Enter Quantity you want:");
                 int num = sc.nextInt();
+                double availableAmount = availableAmount(itemName);
+                while (itemType.equals("kilo") && num > 10 || (availableAmount < num)) {
+                    System.out.println("Available Amout of " + itemName + "is: " + availableAmount);
+                    System.out.println("Valid Quantity for Loose Items(Sold by kilo): maximum 10 kilo");
+                    System.out.println("Enter Quantity you want:");
+                    num = sc.nextInt();
+                }
+                while (itemType.equals("one") && num > 50 || (availableAmount < num)) {
+                    System.out.println("Available Amout of " + itemName + "is: " + availableAmount);
+                    System.out.println("Valid Quantity for Sealed Items(Sold by unit): maximum 50 unit");
+                    System.out.println("Enter Quantity you want:");
+                    num = sc.nextInt();
+                }
 
                 for (int x = 0; x < items.size(); x++) {
                     String tempp = items.get(x).getName();
                     if (tempp.equals(n)) {
                         item addt = items.get(x);
                         addt.setOrderedQuantity(num);
+                        double itemQuant = items.get(x).getAvailableNum();
+                        items.get(x).setAvailableNum(itemQuant - num);
                         return items.get(x);
                     }
                 }
@@ -239,20 +302,33 @@ public class store {
                     System.out.println("Enter Quantity you want:");
                     int num = sc.nextInt();
 
+                    boolean checkQuantity = checkQuantity(nm, num);
+                    double availableAmount = availableAmount(nm);
+
+                    while (checkQuantity == false || availableAmount < num) {
+                        System.out.println("Not Valid Quantity!");
+                        System.out.println("Available Amout of " + nm + "is: " + availableAmount);
+                        System.out.println("Valid Quantity for Sealed Items(Sold by unit): maximum 50 unit");
+                        System.out.println("Valid Quantity for Loose Items(Sold by kilo): maximum 10 kilo");
+                        System.out.println("Enter Quantity you want:");
+                        num = sc.nextInt();
+                        checkQuantity = checkQuantity(nm, num);
+                    }
+
                     for (int x = 0; x < items.size(); x++) {
                         String tempp = items.get(x).getBrand();
                         if (tempp.equals(n)) {
                             item addt = items.get(x);
                             addt.setOrderedQuantity(num);
+                            double itemQuant = items.get(x).getAvailableNum();
+                            items.get(x).setAvailableNum(itemQuant - num);
                             return items.get(x);
                         }
-
                     }
                 }
             }
         }
         return null;
-
     }
 
     public item search(String useType) {
@@ -272,10 +348,7 @@ public class store {
                 String itt = sc.next();
                 item cartitem2 = searchForItemByBrand(itt, useType);
                 return cartitem2;
-
         }
         return null;
-
     }
-
-}
+};
