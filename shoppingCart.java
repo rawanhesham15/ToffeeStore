@@ -37,7 +37,7 @@ public class shoppingCart {
 
         BufferedWriter out = null;
         try {
-            FileWriter fstream = new FileWriter("shoppingCart.txt", true); // true tells to append data.
+            FileWriter fstream = new FileWriter("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\shoppingCart.txt", true); // true tells to append data.
             out = new BufferedWriter(fstream);
             out.write(id + ","); // user's name l7d ma tofrag
             out.write(n + ","); // the item name
@@ -89,7 +89,7 @@ public class shoppingCart {
     }
 
     public void loadItemsFromCart(LoggedInUser l) throws FileNotFoundException {
-        File f = new File("shoppingCart.txt");
+        File f = new File("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\shoppingCart.txt");
         try (Scanner scanner = new Scanner(f)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();

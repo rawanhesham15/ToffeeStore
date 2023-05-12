@@ -24,7 +24,7 @@ public class store {
     public void storeCatg() throws IOException {
         // load chocolate , the first category
         BufferedReader chocFile = new BufferedReader(
-                new FileReader("chocolate.txt"));
+                new FileReader("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\chocolate.txt"));
         category chocolate = new category();
         String chocCategoryLine = chocFile.readLine();
         String categoryName1[] = chocCategoryLine.split(" ");
@@ -48,7 +48,7 @@ public class store {
 
         // load the cake , the second category
         BufferedReader cakeFile = new BufferedReader(
-                new FileReader("cake.txt"));
+                new FileReader("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\cake.txt"));
         category cake = new category();
         String cakeCategoryLine = cakeFile.readLine();
         String categoryName2[] = cakeCategoryLine.split(" ");
@@ -72,7 +72,7 @@ public class store {
         addCategory(cake);
         // load the biscuits, the third category
         BufferedReader biscFile = new BufferedReader(
-                new FileReader("biscuit.txt"));
+                new FileReader("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\biscuit.txt"));
         category biscuit = new category();
         String biscCategoryLine = biscFile.readLine();
         String categoryName3[] = biscCategoryLine.split(" ");
@@ -97,7 +97,7 @@ public class store {
 
         // load the sweets, the fourth and last category
         BufferedReader sweetFile = new BufferedReader(
-                new FileReader("sweet.txt"));
+                new FileReader("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\sweet.txt"));
         category sweet = new category();
         String sweetCategoryLine = sweetFile.readLine();
         String categoryName4[] = sweetCategoryLine.split(" ");
@@ -188,8 +188,8 @@ public class store {
                         return items.get(x);
                     }
                 }
-            item i = search(t);
-            return i;
+                item i = search(t);
+                return i;
             }
             else if(ch == 0)
             {
@@ -357,48 +357,48 @@ public class store {
                             itemExist = false;
                             item cartitem2 = searchForItemByName(it, useType);
                             return cartitem2;
-            
+
                         }
-                    
+
                     }
                     if(itemExist)
                     {
-                            System.err.println("Sorry this item doesn't exist ");
-                            System.err.println("Try again");
-                        
+                        System.err.println("Sorry this item doesn't exist ");
+                        System.err.println("Try again");
+
                     }
                 }
-                
+
             case 2:
-            Boolean br = true;
-            // validating that the brand exists
-            // System.out.println("Enter the item's brand: ");
-            // String itt = sc.next();
-            while(br)
-            {
-                System.out.println("Enter the item's brand: ");
-                String it = sc.next();
-                for (item item : items) {
-                    if(item.getBrand().equals(it))
+                Boolean br = true;
+                // validating that the brand exists
+                // System.out.println("Enter the item's brand: ");
+                // String itt = sc.next();
+                while(br)
+                {
+                    System.out.println("Enter the item's brand: ");
+                    String it = sc.next();
+                    for (item item : items) {
+                        if(item.getBrand().equals(it))
+                        {
+                            br = false;
+                            item cartitem = searchForItemByBrand(it, useType);
+                            return cartitem;
+
+                        }
+                    }
+                    if(br)
                     {
-                        br = false;
-                        item cartitem = searchForItemByBrand(it, useType);
-                        return cartitem;
-        
+                        System.err.println("Sorry this brand doesn't exist ");
+                        System.err.println("Try again");
+
                     }
                 }
-                if(br)
-            {
-                    System.err.println("Sorry this brand doesn't exist ");
-                    System.err.println("Try again");
-                
-            }
-            }
-    default:
-    System.err.println("Invalid input");
-        break;
-            
-            
+            default:
+                System.err.println("Invalid input");
+                break;
+
+
         }
         return null;
     }
