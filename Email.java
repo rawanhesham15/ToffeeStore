@@ -9,9 +9,9 @@ import javax.mail.internet.MimeMessage;
 import java.util.*;
 import javax.mail.*;
 
-
 public class Email {
     static String otp;
+
     public static void sendOTP(String email) {
         otp = generateOTP();
         // Send the OTP by email
@@ -20,7 +20,6 @@ public class Email {
         String host = "smtp.gmail.com";
         String username = "toffeestore.eg@gmail.com";
         String password = "fvymovdgrxmqntcx";
-
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
