@@ -1,11 +1,14 @@
 import java.io.IOException;
 import java.util.*;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import javax.mail.*;
+import java.lang.*;
+import java.io.*;
 
-public class main {
-    public static void main(String[] args) throws IOException {
-        GneralUser generalUser = new GneralUser();
+public class Main {
+    public static void main(String[] args) throws IOException{
+
+
+        GeneralUser generalUser = new GeneralUser();
         LoggedInUser loggedUser = new LoggedInUser();
         shoppingCart cart = new shoppingCart();
 
@@ -91,6 +94,3 @@ public class main {
         }
     }
 }
-
-// i added the user type because the functions will do additional steps if it
-// was logged in user
