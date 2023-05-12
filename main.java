@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.*;
-import javax.mail.*;
 import java.lang.*;
 import java.io.*;
 

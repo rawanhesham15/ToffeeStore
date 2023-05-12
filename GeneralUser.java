@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class GeneralUser {
-    private static final String FILE_PATH = "C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\users.txt";
+    private static final String FILE_PATH = "C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\users.txt";
     private static final int MAX_USERS = 10;
 
     // general user may have a store
@@ -109,7 +109,6 @@ public class GeneralUser {
             System.out.println("Enter the OTP sent to your email: ");
             userOtp = sc.nextLine();
         }
-        System.out.println("Done :)");
 
 
         System.out.print("Enter your Address: ");
@@ -117,7 +116,7 @@ public class GeneralUser {
 
         BufferedWriter out = null;
         try {
-            FileWriter fstream = new FileWriter("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\users.txt", true); // true tells to append data.
+            FileWriter fstream = new FileWriter("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\users.txt", true); // true tells to append data.
             out = new BufferedWriter(fstream);
             out.write(name + ",");
             out.write(pass + ",");

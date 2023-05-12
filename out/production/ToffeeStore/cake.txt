@@ -1,0 +1,4 @@
+category: CAKES
+category: cake name: chocolateCake brand: cc price: 150 availablenum: 150 type: one maxQuantity: 50
+category: cake name: orangeCake brand: cc price: 150 availablenum: 100 type: one maxQuantity: 50
+category: cake name: vanillaCake brand: cc price: 150 availablenum: 250 type: one maxQuantity: 50

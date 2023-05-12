@@ -24,7 +24,7 @@ public class store {
     public void storeCatg() throws IOException {
         // load chocolate , the first category
         BufferedReader chocFile = new BufferedReader(
-                new FileReader("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\chocolate.txt"));
+                new FileReader("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\chocolate.txt"));
         category chocolate = new category();
         String chocCategoryLine = chocFile.readLine();
         String categoryName1[] = chocCategoryLine.split(" ");
@@ -48,7 +48,7 @@ public class store {
 
         // load the cake , the second category
         BufferedReader cakeFile = new BufferedReader(
-                new FileReader("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\cake.txt"));
+                new FileReader("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\cake.txt"));
         category cake = new category();
         String cakeCategoryLine = cakeFile.readLine();
         String categoryName2[] = cakeCategoryLine.split(" ");
@@ -72,7 +72,7 @@ public class store {
         addCategory(cake);
         // load the biscuits, the third category
         BufferedReader biscFile = new BufferedReader(
-                new FileReader("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\biscuit.txt"));
+                new FileReader("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\biscuit.txt"));
         category biscuit = new category();
         String biscCategoryLine = biscFile.readLine();
         String categoryName3[] = biscCategoryLine.split(" ");
@@ -97,7 +97,7 @@ public class store {
 
         // load the sweets, the fourth and last category
         BufferedReader sweetFile = new BufferedReader(
-                new FileReader("C:\\Users\\Dell\\IdeaProjects\\ToffeeProject\\src\\sweet.txt"));
+                new FileReader("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\sweet.txt"));
         category sweet = new category();
         String sweetCategoryLine = sweetFile.readLine();
         String categoryName4[] = sweetCategoryLine.split(" ");
