@@ -1,5 +1,4 @@
 import java.io.*;
-import java.net.ConnectException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -9,7 +8,7 @@ public class GeneralUser {
 
     // general user may have a store
     public static String[] register() throws IOException {
-        boolean nvalid = true  , pvalid = true , evalid = true , phvalid = true;
+        boolean nvalid = true, pvalid = true, evalid = true, phvalid = true;
         // regex part for the data
         final String NAME_REGEX = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
 
@@ -37,62 +36,48 @@ public class GeneralUser {
 
         final Pattern PASSWORD_PATTERN = Pattern.compile(PASSWORD_REGEX);
 
-        String name = ""  , pass = "" , address = "", phoneNum = "", email = "";
+        String name = "", pass = "", address = "", phoneNum = "", email = "";
         Scanner sc = new Scanner(System.in);
         System.out.println("\n     ^^^^^REGISTER^^^^^");
         System.out.println("-----------------------------");
         while (nvalid) {
             System.out.print("Enter your Name: ");
             name = sc.nextLine();
-            if(NAME_PATTERN.matcher(name).matches())
-            {
+            if (NAME_PATTERN.matcher(name).matches()) {
                 nvalid = false;
-            }
-            else
-            {
+            } else {
                 System.err.println("Please enter a vaild name");
             }
         }
 
-        while(pvalid)
-        {
+        while (pvalid) {
             System.out.print("Enter your Password: ");
             pass = sc.nextLine();
-            if(PASSWORD_PATTERN.matcher(pass).matches())
-            {
+            if (PASSWORD_PATTERN.matcher(pass).matches()) {
                 pvalid = false;
             }
 
-            else
-            {
+            else {
                 System.err.println("please enter a valid password");
             }
         }
-        while(phvalid)
-        {
+
+        while (phvalid) {
             System.out.print("Enter your Phone Number: ");
             phoneNum = sc.nextLine();
-            if(PHONE_PATTERN.matcher(phoneNum).matches())
-            {
+            if (PHONE_PATTERN.matcher(phoneNum).matches()) {
                 phvalid = false;
-            }
-
-            else
-            {
+            } else {
                 System.err.println("please enter a valid phone number");
             }
         }
-        while(evalid)
-        {
+
+        while (evalid) {
             System.out.print("Enter your Email: ");
             email = sc.nextLine();
-            if(EMAIL_PATTERN.matcher(email).matches())
-            {
+            if (EMAIL_PATTERN.matcher(email).matches()) {
                 evalid = false;
-            }
-
-            else
-            {
+            } else {
                 System.err.println("please enter a valid email");
             }
         }
@@ -104,19 +89,18 @@ public class GeneralUser {
 
         System.out.println("Enter the OTP sent to your email: ");
         userOtp = sc.nextLine();
-        while(!otp.equals(userOtp)){
+        while (!otp.equals(userOtp)) {
             System.out.println("ERROR, try again!");
             System.out.println("Enter the OTP sent to your email: ");
             userOtp = sc.nextLine();
         }
 
-
         System.out.print("Enter your Address: ");
         address = sc.nextLine();
-
         BufferedWriter out = null;
         try {
-            FileWriter fstream = new FileWriter("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\users.txt", true); // true tells to append data.
+            FileWriter fstream = new FileWriter("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\users.txt", true); // true
+            // data.
             out = new BufferedWriter(fstream);
             out.write(name + ",");
             out.write(pass + ",");
@@ -195,13 +179,5 @@ public class GeneralUser {
         }
         String data[] = { null };
         return data;
-    }
-
-    public void viewCategories() {
-        System.out.println("^^^^^VIEW CATEGORIES^^^^^");
-    }
-
-    public void searchForItem() {
-        System.out.println("^^^^^SEARCH FOR ITEM^^^^^");
     }
 }

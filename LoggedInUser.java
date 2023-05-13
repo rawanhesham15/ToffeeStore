@@ -127,7 +127,6 @@ public class LoggedInUser {
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
-        // System.out.println(formatter.format(date));
 
         cart.displayShoppingCartItems();
         price = cart.calcTotalPrice();

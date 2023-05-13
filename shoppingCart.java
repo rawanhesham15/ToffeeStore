@@ -1,9 +1,6 @@
-
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,7 +34,8 @@ public class shoppingCart {
 
         BufferedWriter out = null;
         try {
-            FileWriter fstream = new FileWriter("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\shoppingCart.txt", true); // true tells to append data.
+            FileWriter fstream = new FileWriter("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\shoppingCart.txt",
+                    true); // true tells to append data.
             out = new BufferedWriter(fstream);
             out.write(id + ","); // user's name l7d ma tofrag
             out.write(n + ","); // the item name
@@ -107,19 +105,21 @@ public class shoppingCart {
                     items.add(itemload);
                 }
             }
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-
     }
 
     public double calcTotalPrice() {
         double totalPrice = 0;
         double totalWithFees;
         int choice;
+
         for (int i = 0; i < items.size(); i++) {
             totalPrice += items.get(i).getPrice() * items.get(i).getOrderedQuantity();
         }
+
         System.out.println("\n Total Price: " + totalPrice);
         System.out.println("Shipping Fees: 50");
         totalWithFees = totalPrice + 50;
@@ -133,5 +133,3 @@ public class shoppingCart {
     }
 
 }
-
-// this function is to load whatever was previously in the cart to the items

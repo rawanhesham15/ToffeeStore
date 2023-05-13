@@ -1,11 +1,16 @@
+// FCAI – Intro to Software Engineering – 2022-2023 - Assignment 3
+// Program Name: Toffe Store
+// Last Modification Date: 13/5/2023
+// Author1 and ID: Rawan Hesham Hamdy  ID: 20211040
+// Author2 and ID: Marwa Sameh Mostafa  ID: 20210514
+// Author3 and ID: Asmaa Elawady Ibrahim  ID: 20210068
+// description: progarm for a candy store called Toffee Store.
+
 import java.io.IOException;
 import java.util.*;
-import java.lang.*;
-import java.io.*;
 
 public class main {
     public static void main(String[] args) throws IOException {
-
         GeneralUser generalUser = new GeneralUser();
         LoggedInUser loggedUser = new LoggedInUser();
         shoppingCart cart = new shoppingCart();
@@ -15,6 +20,7 @@ public class main {
         String data[];
         String user = "General";
         int choice = 0;
+
         while (user == "General" && choice != 5) {
             Scanner sc = new Scanner(System.in);
             System.out.println("\n*********Welcome to Toffee Store*********\n");
@@ -25,6 +31,7 @@ public class main {
             System.out.println("5- Exit.");
             System.out.print("What do you want to do? choose a number (1, 2, 3, 4, or 5): ");
             choice = sc.nextInt();
+
             if (choice == 1) {
                 data = new String[7];
                 data = generalUser.logIn();
@@ -56,6 +63,7 @@ public class main {
                 return;
             }
         }
+
         while (choice != 6) {
             Scanner sc = new Scanner(System.in);
             System.out.println("\n*********Welcome " + loggedUser.getUserName() + "*********\n");

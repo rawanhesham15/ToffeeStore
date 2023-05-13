@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
-import javax.management.openmbean.SimpleType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +27,7 @@ public class store {
         String chocCategoryLine = chocFile.readLine();
         String categoryName1[] = chocCategoryLine.split(" ");
         chocolate.setName(categoryName1[1]);
+
         for (int i = 0; i < 2; i++) {
             String line = chocFile.readLine();
             String words[] = line.split(" ");
@@ -44,6 +43,7 @@ public class store {
             chocolate.addItem(newitem);
             addItem(newitem);
         }
+
         addCategory(chocolate);
 
         // load the cake , the second category
@@ -69,7 +69,9 @@ public class store {
             cake.addItem(newitem);
             addItem(newitem);
         }
+
         addCategory(cake);
+
         // load the biscuits, the third category
         BufferedReader biscFile = new BufferedReader(
                 new FileReader("C:\\Users\\Dell\\Documents\\GitHub\\ToffeeStore\\biscuit.txt"));
@@ -93,6 +95,7 @@ public class store {
             biscuit.addItem(newitem);
             addItem(newitem);
         }
+
         addCategory(biscuit);
 
         // load the sweets, the fourth and last category
@@ -118,8 +121,8 @@ public class store {
             sweet.addItem(newitem);
             addItem(newitem);
         }
-        addCategory(sweet);
 
+        addCategory(sweet);
     }
 
     Scanner sc = new Scanner(System.in);
@@ -190,9 +193,7 @@ public class store {
                 }
                 item i = search(t);
                 return i;
-            }
-            else if(ch == 0)
-            {
+            } else if (ch == 0) {
                 return null;
             }
         }
@@ -243,7 +244,7 @@ public class store {
         }
 
         String t = "loggedin";
-        if (userType.equals(t) ) {
+        if (userType.equals(t)) {
             System.out.println("Enter 1 if you want to add an item to your shopping cart");
             System.err.println("Enter 0 to quit");
             int ch = sc.nextInt();
@@ -274,9 +275,7 @@ public class store {
                         return items.get(x);
                     }
                 }
-            }
-            else if(ch == 0)
-            {
+            } else if (ch == 0) {
                 return null;
             }
         }
@@ -295,7 +294,7 @@ public class store {
                 continue;
             }
             String t = "loggedin";
-            if (userType.equals(t) ) {
+            if (userType.equals(t)) {
                 System.out.println("Enter 1 if you want to add an item to your shopping cart");
                 System.err.println("Enter 0 to quit");
                 int ch = sc.nextInt();
@@ -328,9 +327,7 @@ public class store {
                             return items.get(x);
                         }
                     }
-                }
-                else if(ch == 0)
-                {
+                } else if (ch == 0) {
                     return null;
                 }
             }
@@ -346,59 +343,45 @@ public class store {
         int c = sc.nextInt();
         switch (c) {
             case 1:
-                Boolean itemExist  =true;
-                while(itemExist)
-                {
+                Boolean itemExist = true;
+                while (itemExist) {
                     System.out.println("Enter the item's name: ");
                     String it = sc.next();
                     for (item item : items) {
-                        if(item.getName().equals(it))
-                        {
+                        if (item.getName().equals(it)) {
                             itemExist = false;
                             item cartitem2 = searchForItemByName(it, useType);
                             return cartitem2;
-
                         }
-
                     }
-                    if(itemExist)
-                    {
+                    if (itemExist) {
                         System.err.println("Sorry this item doesn't exist ");
                         System.err.println("Try again");
-
                     }
                 }
 
             case 2:
                 Boolean br = true;
+
                 // validating that the brand exists
-                // System.out.println("Enter the item's brand: ");
-                // String itt = sc.next();
-                while(br)
-                {
+                while (br) {
                     System.out.println("Enter the item's brand: ");
                     String it = sc.next();
                     for (item item : items) {
-                        if(item.getBrand().equals(it))
-                        {
+                        if (item.getBrand().equals(it)) {
                             br = false;
                             item cartitem = searchForItemByBrand(it, useType);
                             return cartitem;
-
                         }
                     }
-                    if(br)
-                    {
+                    if (br) {
                         System.err.println("Sorry this brand doesn't exist ");
                         System.err.println("Try again");
-
                     }
                 }
             default:
                 System.err.println("Invalid input");
                 break;
-
-
         }
         return null;
     }
